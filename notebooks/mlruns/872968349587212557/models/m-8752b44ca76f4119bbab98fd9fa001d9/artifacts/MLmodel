@@ -1,0 +1,22 @@
+artifact_path: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-8752b44ca76f4119bbab98fd9fa001d9/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.1
+mlflow_version: 3.3.2
+model_id: m-8752b44ca76f4119bbab98fd9fa001d9
+model_size_bytes: 73279
+model_uuid: m-8752b44ca76f4119bbab98fd9fa001d9
+prompts: null
+run_id: c42ba8c5c8cd415f9036420fa6e228da
+utc_time_created: '2025-09-07 19:44:41.341003'

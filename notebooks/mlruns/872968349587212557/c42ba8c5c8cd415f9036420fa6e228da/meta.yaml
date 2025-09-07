@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/c42ba8c5c8cd415f9036420fa6e228da/artifacts
+end_time: 1757274303068
+entry_point_name: ''
+experiment_id: '872968349587212557'
+lifecycle_stage: active
+run_id: c42ba8c5c8cd415f9036420fa6e228da
+run_name: Advanced-Triage-Ensemble
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757274281120
+status: 4
+tags: []
+user_id: psp17

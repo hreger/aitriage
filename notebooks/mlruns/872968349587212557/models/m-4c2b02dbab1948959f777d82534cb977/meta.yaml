@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-4c2b02dbab1948959f777d82534cb977/artifacts
+creation_timestamp: 1757274503040
+experiment_id: '872968349587212557'
+last_updated_timestamp: 1757274506665
+model_id: m-4c2b02dbab1948959f777d82534cb977
+model_type: null
+name: scaler
+source_run_id: 6291cde6c09f490bb6ccd20862adcd35
+status: 2
+status_message: null

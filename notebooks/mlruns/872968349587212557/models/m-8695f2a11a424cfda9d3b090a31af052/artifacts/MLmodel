@@ -1,0 +1,21 @@
+artifact_path: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-8695f2a11a424cfda9d3b090a31af052/artifacts
+flavors:
+  lightgbm:
+    code: null
+    data: model.pkl
+    lgb_version: 4.6.0
+    model_class: lightgbm.sklearn.LGBMClassifier
+  python_function:
+    data: model.pkl
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.lightgbm
+    python_version: 3.12.3
+mlflow_version: 3.3.2
+model_id: m-8695f2a11a424cfda9d3b090a31af052
+model_size_bytes: 5281
+model_uuid: m-8695f2a11a424cfda9d3b090a31af052
+prompts: null
+run_id: 970cd90346df46d2a5ac9a6095499d9b
+utc_time_created: '2025-09-07 19:49:50.682728'

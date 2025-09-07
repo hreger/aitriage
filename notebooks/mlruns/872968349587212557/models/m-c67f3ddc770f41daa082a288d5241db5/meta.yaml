@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-c67f3ddc770f41daa082a288d5241db5/artifacts
+creation_timestamp: 1757274492035
+experiment_id: '872968349587212557'
+last_updated_timestamp: 1757274497657
+model_id: m-c67f3ddc770f41daa082a288d5241db5
+model_type: null
+name: xgboost_model
+source_run_id: 6291cde6c09f490bb6ccd20862adcd35
+status: 2
+status_message: null
