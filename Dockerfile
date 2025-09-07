@@ -21,8 +21,9 @@ COPY . .
 # Create directories for data and models
 RUN mkdir -p data models notebooks
 
-# Expose Streamlit port
+# Expose Streamlit and FastAPI ports
 EXPOSE 8501
+EXPOSE 8080
 
 # Set environment variables
 ENV PYTHONPATH=/app
