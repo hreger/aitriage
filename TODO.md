@@ -39,7 +39,7 @@
   - [x] POST /fairness: Fairness assessment and debiasing
   - [x] POST /counterfactual: Counterfactual explanations
   - [x] GET /health: API health check
-- [ ] Add Temporal Fusion Transformer implementation for temporal predictions
+- [x] Add Temporal Fusion Transformer implementation for temporal predictions
 - [ ] Implement advanced debiasing strategies (reweighting, adversarial)
 - [ ] Add comprehensive error handling and Pydantic validation
 - [ ] Test all endpoints and ensure proper async performance

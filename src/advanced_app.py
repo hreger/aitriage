@@ -92,27 +92,70 @@ def load_datasets():
 
 @st.cache_resource
 def load_advanced_models():
-    """Load advanced ML models and preprocessing objects"""
+    """Load advanced ML models and preprocessing objects with proper error handling"""
     try:
-        models = {
-            'xgb_model': joblib.load('models/xgb_model.joblib'),
-            'lgb_model': joblib.load('models/lgb_model.joblib'),
-            'scaler': joblib.load('models/advanced_scaler.joblib'),
-            'feature_names': joblib.load('models/structured_features.joblib')
-        }
+        models = {}
+
+        # Load XGBoost model
+        try:
+            models['xgb_model'] = joblib.load('models/xgb_model.joblib')
+            print("XGBoost model loaded successfully")
+        except FileNotFoundError:
+            st.warning("XGBoost model not found. Please train the model first.")
+            models['xgb_model'] = None
+
+        # Load LightGBM model (use XGBoost as fallback)
+        try:
+            models['lgb_model'] = joblib.load('models/lgb_model.joblib')
+            print("LightGBM model loaded successfully")
+        except FileNotFoundError:
+            if models.get('xgb_model') is not None:
+                st.info("LightGBM model not found. Using XGBoost as fallback.")
+                models['lgb_model'] = models['xgb_model']
+            else:
+                st.warning("LightGBM model not found and no XGBoost fallback available.")
+                models['lgb_model'] = None
+
+        # Load scaler
+        try:
+            models['scaler'] = joblib.load('models/advanced_scaler.joblib')
+            print("Scaler loaded successfully")
+        except FileNotFoundError:
+            st.warning("Scaler not found. Please train the model first.")
+            models['scaler'] = None
+
+        # Load feature names
+        try:
+            models['feature_names'] = joblib.load('models/structured_features.joblib')
+            print("Feature names loaded successfully")
+        except FileNotFoundError:
+            st.warning("Feature names not found. Using default features.")
+            models['feature_names'] = ['age', 'temperature', 'heart_rate', 'respiratory_rate',
+                                     'oxygen_saturation', 'blood_pressure_systolic', 'blood_pressure_diastolic',
+                                     'pain_score', 'arrival_encoded', 'consciousness_encoded', 'gender_encoded']
 
         # Try to load ClinicalBERT components
         try:
             models['bert_tokenizer'] = joblib.load('models/bert_tokenizer.joblib')
             models['bert_model'] = torch.load('models/bert_model.pth')
-        except:
-            st.warning("ClinicalBERT components not found. Text processing will be limited.")
+            print("ClinicalBERT components loaded successfully")
+        except FileNotFoundError:
+            st.info("ClinicalBERT components not found. Text processing will be limited.")
+            models['bert_tokenizer'] = None
+            models['bert_model'] = None
+        except Exception as e:
+            st.warning(f"Error loading ClinicalBERT: {e}")
             models['bert_tokenizer'] = None
             models['bert_model'] = None
 
+        # Check if we have at least one model available
+        if models.get('xgb_model') is None and models.get('lgb_model') is None:
+            st.error("No ML models available. Please train models first.")
+            return None
+
         return models
-    except FileNotFoundError:
-        st.warning("Advanced models not found. Please run the advanced notebook first.")
+    except Exception as e:
+        st.error(f"Critical error loading models: {e}")
         return None
 
 # Load data and models
