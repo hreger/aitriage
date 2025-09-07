@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-dc93b151f32544f7a05a05ad4ff78bc3/artifacts
+creation_timestamp: 1757274391936
+experiment_id: '872968349587212557'
+last_updated_timestamp: 1757274411447
+model_id: m-dc93b151f32544f7a05a05ad4ff78bc3
+model_type: null
+name: lightgbm_model
+source_run_id: d1d5391b98974829830af65d8659bdaa
+status: 2
+status_message: null

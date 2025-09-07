@@ -1,0 +1,22 @@
+artifact_path: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-c67f3ddc770f41daa082a288d5241db5/artifacts
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.12.3
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.sklearn.XGBClassifier
+    model_format: xgb
+    xgb_version: 3.0.5
+mlflow_version: 3.3.2
+model_id: m-c67f3ddc770f41daa082a288d5241db5
+model_size_bytes: 69893
+model_uuid: m-c67f3ddc770f41daa082a288d5241db5
+prompts: null
+run_id: 6291cde6c09f490bb6ccd20862adcd35
+utc_time_created: '2025-09-07 19:48:12.106252'

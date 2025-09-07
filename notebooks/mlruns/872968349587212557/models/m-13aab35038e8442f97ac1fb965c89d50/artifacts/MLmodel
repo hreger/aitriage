@@ -1,0 +1,31 @@
+artifact_path: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-13aab35038e8442f97ac1fb965c89d50/artifacts
+flavors:
+  lightgbm:
+    code: null
+    data: model.pkl
+    lgb_version: 4.6.0
+    model_class: lightgbm.sklearn.LGBMClassifier
+  python_function:
+    data: model.pkl
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.lightgbm
+    python_version: 3.12.3
+is_signature_from_type_hint: false
+mlflow_version: 3.3.2
+model_id: m-13aab35038e8442f97ac1fb965c89d50
+model_size_bytes: 7000
+model_uuid: m-13aab35038e8442f97ac1fb965c89d50
+prompts: null
+run_id: 5363c1116b894f31a7b3fec7eebb191c
+saved_input_example_info:
+  artifact_path: input_example.json
+  serving_input_path: serving_input_example.json
+  type: ndarray
+signature:
+  inputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1, 19]}}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int32", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-09-07 19:49:18.913713'

@@ -1,0 +1,14 @@
+artifact_path: file:///c:/Users/psp17/aitriage/notebooks/mlruns/872968349587212557/models/m-091d5060b7554a52a1d92771bd66560e/artifacts
+flavors:
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.1
+mlflow_version: 3.3.2
+model_id: m-091d5060b7554a52a1d92771bd66560e
+model_size_bytes: 1305
+model_uuid: m-091d5060b7554a52a1d92771bd66560e
+prompts: null
+run_id: c42ba8c5c8cd415f9036420fa6e228da
+utc_time_created: '2025-09-07 19:44:55.294587'
