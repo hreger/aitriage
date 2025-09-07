@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  ed-ai-triage:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./notebooks:/app/notebooks
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    command: streamlit run src/app.py --server.port=8501 --server.address=0.0.0.0
+
+  # Optional: Jupyter notebook service
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./notebooks:/app/notebooks
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+    profiles:
+      - jupyter
