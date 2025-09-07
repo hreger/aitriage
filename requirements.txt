@@ -5,17 +5,15 @@ scikit-learn>=1.0.0
 scipy>=1.7.0
 
 # Deep Learning
-torch>=1.12,<2.0
-torchvision>=0.13,<0.14
-pytorch-lightning==1.6.5
-torchmetrics==0.9.3
-pytorch-forecasting==0.10.3
-
+torch>=2.0.0
+torchvision>=0.15.0
+pytorch-lightning>=2.0.0
+torchmetrics>=0.11.0
+pytorch-forecasting>=1.0.0
 
 # Advanced ML Models
 xgboost>=3.0.5
 lightgbm>=3.3.0
-pytorch-forecasting>=0.10.0
 
 # Interpretability
 shap>=0.41.0
@@ -37,7 +35,6 @@ seaborn>=0.11.0
 # Text Processing
 nltk>=3.7
 spacy>=3.4.0
-
 
 # Utilities
 joblib>=1.1.0
@@ -64,4 +61,10 @@ pytest-cov>=3.0.0
 black>=22.3.0
 flake8>=4.0.0
 mypy>=0.950
+
+# Web Framework
+django>=4.2
+
+# NLP
+transformers>=4.21.0
 

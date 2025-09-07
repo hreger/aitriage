@@ -99,36 +99,108 @@ class DebiasingResponse(BaseModel):
 def load_resources():
     global models, interpret_engine, fairness_assessor, tft_model, tft_dataset
     try:
-        models['xgb_model'] = joblib.load('models/xgb_model.joblib')
-        models['lgb_model'] = models['xgb_model']  # Use XGBoost as placeholder for LightGBM
-        models['scaler'] = joblib.load('models/advanced_scaler.joblib')
-        models['feature_names'] = joblib.load('models/structured_features.joblib')
+        # Load XGBoost model
+        try:
+            models['xgb_model'] = joblib.load('models/xgb_model.joblib')
+            print("XGBoost model loaded successfully")
+        except FileNotFoundError:
+            print("XGBoost model not found. Please train the model first.")
+            models['xgb_model'] = None
+
+        # Load LightGBM model (use XGBoost as fallback)
+        try:
+            models['lgb_model'] = joblib.load('models/lgb_model.joblib')
+            print("LightGBM model loaded successfully")
+        except FileNotFoundError:
+            print("LightGBM model not found. Using XGBoost as fallback.")
+            models['lgb_model'] = models['xgb_model']
+
+        # Load scaler
+        try:
+            models['scaler'] = joblib.load('models/advanced_scaler.joblib')
+            print("Scaler loaded successfully")
+        except FileNotFoundError:
+            print("Scaler not found. Please train the model first.")
+            models['scaler'] = None
+
+        # Load feature names
+        try:
+            models['feature_names'] = joblib.load('models/structured_features.joblib')
+            print("Feature names loaded successfully")
+        except FileNotFoundError:
+            print("Feature names not found. Using default features.")
+            models['feature_names'] = ['age', 'temperature', 'heart_rate', 'respiratory_rate',
+                                     'oxygen_saturation', 'blood_pressure_systolic', 'blood_pressure_diastolic',
+                                     'pain_score', 'arrival_encoded', 'consciousness_encoded', 'gender_encoded']
+
         # Load ClinicalBERT components if available
         try:
             models['bert_tokenizer'] = joblib.load('models/bert_tokenizer.joblib')
             models['bert_model'] = torch.load('models/bert_model.pth')
-        except:
+            print("ClinicalBERT components loaded successfully")
+        except FileNotFoundError:
+            print("ClinicalBERT components not found. Text processing will be limited.")
             models['bert_tokenizer'] = None
             models['bert_model'] = None
-        interpret_engine = InterpretabilityEngine(
-            models['xgb_model'], models['feature_names']
-        )
-        fairness_assessor = FairnessAssessor()
+        except Exception as e:
+            print(f"Error loading ClinicalBERT: {e}")
+            models['bert_tokenizer'] = None
+            models['bert_model'] = None
+
+        # Initialize interpretability engine if models are available
+        if models['xgb_model'] is not None and models['feature_names'] is not None:
+            try:
+                interpret_engine = InterpretabilityEngine(
+                    models['xgb_model'], models['feature_names']
+                )
+                print("Interpretability engine initialized successfully")
+            except Exception as e:
+                print(f"Error initializing interpretability engine: {e}")
+                interpret_engine = None
+        else:
+            interpret_engine = None
+
+        # Initialize fairness assessor
+        try:
+            fairness_assessor = FairnessAssessor()
+            print("Fairness assessor initialized successfully")
+        except Exception as e:
+            print(f"Error initializing fairness assessor: {e}")
+            fairness_assessor = None
+
         # Load Temporal Fusion Transformer model and dataset config
         try:
             tft_model = torch.load('models/tft_model.pth')
+            print("Temporal Fusion Transformer model loaded successfully")
             # Load dataset config or create placeholder
             tft_dataset = None  # This should be replaced with actual dataset loading
-        except:
+        except FileNotFoundError:
+            print("Temporal Fusion Transformer model not found.")
             tft_model = None
             tft_dataset = None
+        except Exception as e:
+            print(f"Error loading Temporal Fusion Transformer: {e}")
+            tft_model = None
+            tft_dataset = None
+
     except Exception as e:
-        print(f"Error loading models or resources: {e}")
+        print(f"Critical error during resource loading: {e}")
+        # Ensure models dict has all keys even if loading failed
+        for key in ['xgb_model', 'lgb_model', 'scaler', 'feature_names', 'bert_tokenizer', 'bert_model']:
+            if key not in models:
+                models[key] = None
 
 def prepare_features(features: List[float]) -> np.ndarray:
-    arr = np.array(features).reshape(1, -1)
-    scaled = models['scaler'].transform(arr)
-    return scaled
+    """Prepare features for prediction with proper error handling"""
+    if models['scaler'] is None:
+        raise HTTPException(status_code=503, detail="Feature scaler not available. Please train the model first.")
+
+    try:
+        arr = np.array(features).reshape(1, -1)
+        scaled = models['scaler'].transform(arr)
+        return scaled
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Feature preparation error: {e}")
 
 @app.get("/health", tags=["Health"])
 async def health_check():
