@@ -1,0 +1,14 @@
+subject_id,hadm_id,seq_num,icd_code,icd_version,long_title
+1001,20001,1,I10,10,Essential (primary) hypertension
+1001,20001,2,E11.9,10,Type 2 diabetes mellitus without complications
+1002,20002,1,J44.9,10,Chronic obstructive pulmonary disease, unspecified
+1002,20002,2,I25.10,10,Atherosclerotic heart disease of native coronary artery without angina pectoris
+1003,20003,1,N17.9,10,Acute kidney failure, unspecified
+1004,20004,1,R10.9,10,Unspecified abdominal pain
+1004,20004,2,K80.20,10,Calculus of gallbladder without cholecystitis without obstruction
+1005,20005,1,J18.9,10,Pneumonia, unspecified organism
+1006,20006,1,S72.001A,10,Fracture of unspecified part of neck of right femur, initial encounter for closed fracture
+1007,20007,1,R51,10,Headache
+1008,20008,1,I63.9,10,Cerebral infarction, unspecified
+1009,20009,1,A41.9,10,Sepsis, unspecified organism
+1010,20010,1,R07.9,10,Chest pain, unspecified

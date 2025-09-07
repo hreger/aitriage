@@ -1,0 +1,11 @@
+subject_id,charttime,chief_complaint,pain_score,acuity_level,temperature,heart_rate,respiratory_rate,oxygen_saturation,blood_pressure_systolic,blood_pressure_diastolic,consciousness,arrival_mode,triage_assessment
+1001,2023-01-15 14:30:00,Chest pain,7,2,36.8,95,18,98,160,95,Alert,Ambulance,Acute coronary syndrome suspected
+1002,2023-01-16 09:15:00,Shortness of breath,6,2,37.2,110,24,92,155,90,Alert,Walk-in,COPD exacerbation
+1003,2023-01-17 22:45:00,Nausea and vomiting,8,3,38.1,120,20,96,140,85,Alert,Ambulance,Acute kidney injury
+1004,2023-01-18 16:20:00,Abdominal pain,9,2,37.0,85,16,99,130,80,Alert,Walk-in,Acute abdomen
+1005,2023-01-19 08:30:00,Fever and cough,5,3,39.5,105,22,94,125,75,Alert,Walk-in,Community-acquired pneumonia
+1006,2023-01-20 13:45:00,Hip pain after fall,10,1,36.5,90,16,98,135,85,Alert,Ambulance,Hip fracture
+1007,2023-01-21 19:15:00,Severe headache,8,2,36.9,88,14,99,145,90,Alert,Walk-in,Migraine headache
+1008,2023-01-22 07:30:00,Left sided weakness,3,1,37.1,85,16,97,165,95,Confused,Ambulance,Acute stroke
+1009,2023-01-23 11:45:00,Fever and confusion,4,1,39.8,125,28,91,110,65,Confused,Ambulance,Sepsis
+1010,2023-01-24 17:20:00,Chest tightness,6,2,36.7,100,18,96,150,88,Alert,Walk-in,Angina pectoris

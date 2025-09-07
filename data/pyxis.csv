@@ -1,0 +1,17 @@
+subject_id,charttime,medication_name,dose_given,dose_unit,route,administration_status,provider_id,location
+1001,2023-01-15 15:00:00,Lisinopril,10,mg,oral,Given,5001,ED-Medication Room
+1001,2023-01-15 15:00:00,Metformin,500,mg,oral,Given,5001,ED-Medication Room
+1002,2023-01-16 09:45:00,Albuterol,90,mcg,inhalation,Given,5002,ED-Respiratory Station
+1002,2023-01-16 10:00:00,Prednisone,40,mg,oral,Given,5002,ED-Medication Room
+1003,2023-01-17 23:15:00,Furosemide,40,mg,oral,Given,5003,ED-Medication Room
+1004,2023-01-18 16:45:00,Morphine,2,mg,intravenous,Given,5004,ED-Bed 12
+1004,2023-01-18 17:00:00,Ondansetron,4,mg,intravenous,Given,5004,ED-Bed 12
+1005,2023-01-19 09:00:00,Ceftriaxone,1,g,intravenous,Given,5005,ED-Bed 8
+1005,2023-01-19 09:15:00,Azithromycin,500,mg,oral,Given,5005,ED-Medication Room
+1006,2023-01-20 14:15:00,Oxycodone,5,mg,oral,Given,5006,ED-Bed 15
+1007,2023-01-21 19:45:00,Sumatriptan,100,mg,oral,Given,5007,ED-Bed 5
+1008,2023-01-22 08:00:00,Aspirin,325,mg,oral,Given,5008,ED-Bed 3
+1008,2023-01-22 08:15:00,Atorvastatin,80,mg,oral,Given,5008,ED-Medication Room
+1009,2023-01-23 12:15:00,Vancomycin,750,mg,intravenous,Given,5009,ED-ICU Bay
+1009,2023-01-23 12:30:00,Piperacillin-Tazobactam,4.5,g,intravenous,Given,5009,ED-ICU Bay
+1010,2023-01-24 17:45:00,Nitroglycerin,0.4,mg,sublingual,Given,5010,ED-Bed 7
