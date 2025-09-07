@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  ed-ai-triage:
+  streamlit-app:
     build: .
     ports:
       - "8501:8501"
@@ -13,6 +13,33 @@ services:
       - PYTHONPATH=/app
     restart: unless-stopped
     command: streamlit run src/app.py --server.port=8501 --server.address=0.0.0.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  fastapi-server:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./notebooks:/app/notebooks
+    environment:
+      - PYTHONPATH=/app
+      - UVICORN_HOST=0.0.0.0
+      - UVICORN_PORT=8080
+    restart: unless-stopped
+    command: uvicorn src.api:app --host 0.0.0.0 --port 8080 --reload
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - streamlit-app
 
   # Optional: Jupyter notebook service
   jupyter:
